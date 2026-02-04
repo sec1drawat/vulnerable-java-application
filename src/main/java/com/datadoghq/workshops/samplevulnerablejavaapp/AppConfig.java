@@ -10,6 +10,7 @@ import java.time.Duration;
 @Configuration
 public class AppConfig
 {
+    public String apiKey = "sec1-prj-adsfawefadscasddfasdfasdfasfaewfqw";
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder)
     {
