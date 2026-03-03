@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.owasp.encoder.Encode;
 
 @RestController
 public class MainController {
@@ -58,7 +59,7 @@ public class MainController {
     log.info("Reading file " + request.path);
     try {
       String result = fileService.readFile(request.path);
-      return new ResponseEntity<>(result, HttpStatus.OK);
+      return new ResponseEntity<>(Encode.forHtml(result), HttpStatus.OK);
     } catch (FileForbiddenFileException e) {
       return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
     } catch (FileReadException e) {
