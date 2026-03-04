@@ -4,13 +4,12 @@ WORKDIR /home/gradle/src
 RUN gradle bootJar --no-daemon
 
 
-FROM amazoncorretto:21-alpine-jdk
-LABEL org.opencontainers.image.source="https://github.com/DataDog/vulnerable-java-application/"
-EXPOSE 8080
-RUN mkdir /app
-WORKDIR /app
-COPY --from=builder /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
-
+8 | LABEL org.opencontainers.image.source="https://github.com/DataDog/vulnerable-java-application/"
+9 | EXPOSE 8080
+10 | RUN mkdir /app && adduser -D appuser && chown -R appuser /app
+11 | USER appuser
+12 | WORKDIR /app
+13 | COPY --from=builder /home/gradle/src/build/libs/*.jar /app/spring-boot-application.jar
 # Install Datadog agent
 RUN wget -O dd-java-agent.jar https://github.com/DataDog/dd-trace-java/releases/download/v1.35.0/dd-java-agent.jar && \
     echo "14f6c325679c7f11db6bc3dc7baba98abd005c1865bd9c61a2a8d560f1a65b26  dd-java-agent.jar" > SHA256SUMS && \
