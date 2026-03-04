@@ -12,6 +12,7 @@ public class AppConfig
 {
 	//Test PR
     public String apiKey = "sk_live_8F3aP9QxL2WmZ7YH6KJ0R4CVDpTnS1EoB5uA";
+    public String iAmRahul = "King";
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder)
     {
