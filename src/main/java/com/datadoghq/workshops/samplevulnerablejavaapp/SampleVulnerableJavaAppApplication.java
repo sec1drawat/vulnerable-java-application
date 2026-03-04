@@ -6,8 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SampleVulnerableJavaAppApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SampleVulnerableJavaAppApplication.class, args);
+
+	public static void main(String[] argss) {
+		SpringApplication.run(SampleVulnerableJavaAppApplication.class, argss);
 	}
 
 }
