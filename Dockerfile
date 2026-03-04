@@ -4,8 +4,8 @@ WORKDIR /home/gradle/src
 RUN gradle bootJar --no-daemon
 
 
-FROM amazoncorretto:21-alpine-jdk
-LABEL org.opencontainers.image.source="https://github.com/DataDog/vulnerable-java-application/"
+7 | FROM amazoncorretto:21-alpine-jdk
+8 | HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:8080/ || exit 1
 EXPOSE 8080
 RUN mkdir /app
 WORKDIR /app
