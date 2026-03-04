@@ -12,6 +12,6 @@ REPO_URL=$(aws ecr describe-repositories --repository-names  domain-tester-servi
 docker tag domain-tester-service $REPO_URL
 
 REGISTRY_URL=$(echo $REPO_URL | cut -d/ -f1)
-aws ecr get-login-password | docker login --username AWS --password-stdin $REGISTRY_URL
+aws ecr get-login-password | docker login --username AWS --password-stdin "$REGISTRY_URL"
 docker push $REPO_URL
 echo $REPO_URL
