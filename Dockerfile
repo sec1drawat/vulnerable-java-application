@@ -4,7 +4,9 @@ WORKDIR /home/gradle/src
 RUN gradle bootJar --no-daemon
 
 
-FROM amazoncorretto:21-alpine-jdk
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+
 LABEL org.opencontainers.image.source="https://github.com/DataDog/vulnerable-java-application/"
 EXPOSE 8080
 RUN mkdir /app
