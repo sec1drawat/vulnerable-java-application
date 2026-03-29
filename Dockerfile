@@ -17,7 +17,7 @@ RUN wget -O dd-java-agent.jar https://github.com/DataDog/dd-trace-java/releases/
     sha256sum -c SHA256SUMS
 
 # Utility
-RUN apk add curl wget
+RUN apk add curl=7.87.0-r0 wget=1.21.3-r0
 RUN mkdir -p /tmp/files && echo "hello" > /tmp/files/hello.txt && echo "world" > /tmp/files/foo.txt
 
 CMD ["java", "-javaagent:/app/dd-java-agent.jar", "-jar", "/app/spring-boot-application.jar"]
